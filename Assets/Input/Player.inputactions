@@ -1,0 +1,54 @@
+{
+    "name": "Player",
+    "maps": [
+        {
+            "name": "Wind Control",
+            "id": "2090e06e-f803-4ff5-9367-4806bbb7efeb",
+            "actions": [
+                {
+                    "name": "windBlowStrength",
+                    "type": "PassThrough",
+                    "id": "d2924dce-12f0-4c3a-9911-de2b71c5541c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "windBlowDirection",
+                    "type": "Value",
+                    "id": "9eeccdf6-dedd-4cd0-9f8b-0dfb576c7701",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bf0d253f-1d41-4b04-86de-e65d07ef4bee",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "windBlowStrength",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dad9bec7-2199-45d9-9b71-5abec18baa73",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "windBlowDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
