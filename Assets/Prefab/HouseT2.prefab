@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3715070844679947024}
-  - component: {fileID: 5828266720140303645}
+  - component: {fileID: 7272271213916215804}
   m_Layer: 0
   m_Name: HouseT2
   m_TagString: Untagged
@@ -215,8 +215,8 @@ Transform:
   - {fileID: 3117171954054425912}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5828266720140303645
-BoxCollider2D:
+--- !u!60 &7272271213916215804
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -247,7 +247,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.49731207, y: 1.5067813}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -257,9 +257,15 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.9946241, y: 4.0135627}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.25219822, y: 4.2992287}
+      - {x: -0.5210181, y: 3.479015}
+      - {x: -0.5476441, y: -0.5179938}
+      - {x: 2.5346313, y: -0.53806424}
+      - {x: 2.5091496, y: 3.5343778}
+      - {x: 2.2165985, y: 4.302232}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1814557644748045456
 GameObject:
   m_ObjectHideFlags: 0
