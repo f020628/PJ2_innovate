@@ -28,6 +28,22 @@ public class WindController : MonoBehaviour
         OnWindApply?.Invoke(dir);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Balloon":
+                Balloon balloon;
+                if (collision.gameObject.TryGetComponent<Balloon>(out balloon))
+                    balloon.Pop();
+                else
+                    Debug.LogWarning("Object " + collision.gameObject.name + " is tagged as a balloon, but there's no balloon component on it.");
+                break;
+            default:
+                break;
+        }
+    }
+
     private void OnEnable()
     {
         actions.Enable();

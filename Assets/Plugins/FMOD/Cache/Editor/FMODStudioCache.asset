@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 1881020303740090174}
   StringsBanks:
   - {fileID: 4251492040263602092}
-  cacheTime: 638305035105158955
+  cacheTime: 638307128803512773
   cacheVersion: 131607
 --- !u!114 &1881020303740090174
 MonoBehaviour:
@@ -66,7 +66,7 @@ MonoBehaviour:
   Path: fmodproject/pj2/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638305035105158955
+  lastModified: 638307128803492247
   FileSizes:
   - Name: Desktop
     Value: 1574
@@ -86,7 +86,7 @@ MonoBehaviour:
   Path: fmodproject/pj2/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638305035105158955
+  lastModified: 638307128803512773
   FileSizes:
   - Name: Desktop
     Value: 758
