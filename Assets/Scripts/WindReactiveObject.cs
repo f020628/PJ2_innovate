@@ -16,7 +16,7 @@ public class WindReactiveObject : MonoBehaviour
 
     private void OnWind(Vector2 windDir)
     {
-        Debug.Log(windDir);
+        Debug.Log(windDir + " " + windDir.magnitude );
         rb.AddForce(windDir);
     }
 }
