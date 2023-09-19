@@ -45,13 +45,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Height: -2.19
-    - _Noise: 58.37
+    - _Height: -2.02
+    - _Noise: 102.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 0.3
-    - _Threshold: 0.642
-    - _Transparency: 0.919
+    - _Speed: 0.15
+    - _Threshold: 0.453
+    - _Transparency: 0.682
     m_Colors:
     - _Color: {r: 0.91211283, g: 0.9593821, b: 0.9716981, a: 1}
   m_BuildTextureStacks: []

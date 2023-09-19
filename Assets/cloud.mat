@@ -25,11 +25,11 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Height: -1.36
-    - _Noise: 103.08
-    - _Speed: 0.1
-    - _Threshold: 0.108
-    - _Transparency: 0.204
+    - _Height: 0.2
+    - _Noise: 271.63
+    - _Speed: 0.03
+    - _Threshold: 0.18
+    - _Transparency: 0.182
     m_Colors:
     - _Color: {r: 0.69166076, g: 0.9339623, b: 0.9161009, a: 1}
   m_BuildTextureStacks: []

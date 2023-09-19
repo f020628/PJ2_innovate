@@ -11,7 +11,7 @@ public class CameraFollowPlayer : MonoBehaviour
     void Update()
     {
         // Lerp camera towards player position
-        transform.position = Vector2.Lerp(transform.position, player.transform.position, cameraFollowT * Time.deltaTime);
-        transform.SetPositionAndRotation(Vector3.Lerp(transform.position, player.transform.position, cameraFollowT * Time.deltaTime) + Vector3.forward * -10, transform.rotation);
+        transform.position = Vector2.Lerp(transform.position, player.transform.position + Vector3.right * 5, cameraFollowT * Time.deltaTime);
+        transform.SetPositionAndRotation(Vector3.Lerp(transform.position, player.transform.position + Vector3.right * 5, cameraFollowT * Time.deltaTime) + Vector3.forward * -10, transform.rotation);
     }
 }

@@ -5,18 +5,21 @@ using UnityEngine;
 public class WindReactiveObject : MonoBehaviour
 {
     private GameObject windController;
-    private Rigidbody2D rb;
+    public PaperPlane plane;
     private void Awake()
     {
         windController = GameObject.Find("WindController");
         WindController.OnWindApply += OnWind;
-
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
+    private void Start()
+    {
+        //plane = GetComponent<PaperPlane>();
+    }
     private void OnWind(Vector2 windDir)
     {
-        Debug.Log(windDir + " " + windDir.magnitude );
-        rb.AddForce(windDir);
+
+        plane.ReceiveWind(windDir);
     }
 }
