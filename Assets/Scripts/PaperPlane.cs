@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PaperPlane : MonoBehaviour
 {
     [Header("Particle System")]
@@ -60,6 +61,7 @@ public class PaperPlane : MonoBehaviour
         verticalV = Mathf.Max(Mathf.Min(verticalV, maxVerticalV), -maxVerticalV * 1.4f);
         rb.velocity = new Vector2(horizontalV, verticalV);
        // Debug.Log(rb.velocity);
+
     }
 
     private float ChangeVelocityX()
@@ -131,4 +133,6 @@ public class PaperPlane : MonoBehaviour
             particles[i].velocity = wind.normalized;
         }
     }
+
+   
 }
