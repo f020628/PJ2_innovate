@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PaperPlane : MonoBehaviour
 {
+    [Header("Material")]
+    public Material cloud;
+    public Material cloud2;
     [Header("Particle System")]
     public new ParticleSystem particleSystem;
+    [Space(15)]
+    public Slider slider;
+    public float rate;
+    public float regeneration;
     [Space(15)]
     public float windMultiply = 1;
     public float maxHorizontalV = 5;
@@ -69,8 +77,8 @@ public class PaperPlane : MonoBehaviour
         float conversion = Mathf.Max(Vector2.Dot(new Vector2(1, 1).normalized, transform.right), Vector2.Dot(new Vector2(1, -1).normalized, transform.right));
         //Debug.Log(conversion);
         conversion = Mathf.Clamp((conversion - Mathf.Sqrt(2) / 2 + float.Epsilon) / (1 - Mathf.Sqrt(2)/2) , 0, 1);
-        
         conversion *= Mathf.Sign(angleOffset) * convertionRatio * Time.deltaTime;
+
         float value = horizontalV - decay + wind.x * (windEfficiency + 0.15f) + conversion - XnaturalDecay * Time.deltaTime;// - Mathf.Abs(angleOffset) * verticalDecayRatio * Time.deltaTime;
         return value;
     }
@@ -78,13 +86,14 @@ public class PaperPlane : MonoBehaviour
     private float ChangeVelocityY()
     {
         //if good & fast, hold speed
-        float speedOffset = Mathf.Clamp((maxHorizontalV - rb.velocity.x) / maxHorizontalV, 0.1f, 1);
+        float speedOffset = Mathf.Clamp((maxHorizontalV - rb.velocity.x) / maxHorizontalV, 0.4f, 1);
         speedOffset = Mathf.Lerp(0.2f, 1.2f, speedOffset);
         float rotationOffset = Mathf.Lerp(0.2f, 1, Mathf.Abs(angleOffset));
         float decay = verticalDampRatio * maxVerticalV * Time.deltaTime * rotationOffset * speedOffset;
 
-        //float xConversion = Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad) * Mathf.Sign(angleOffset) * horizontalV;
-        float value = verticalV - decay + wind.y * windEfficiency - rotationOffset * YnaturalDecay * Time.deltaTime;// - (0.1f + angleOffset) * accelerationRatio * Time.deltaTime;
+        float conversion = Mathf.Lerp(0.4f, 1, Mathf.Abs(angleOffset)) * convertionRatio * Time.deltaTime;
+     
+        float value = verticalV - decay + wind.y * windEfficiency - rotationOffset * YnaturalDecay * Time.deltaTime - conversion;// - (0.1f + angleOffset) * accelerationRatio * Time.deltaTime;
         return value;
     }
 
@@ -123,12 +132,21 @@ public class PaperPlane : MonoBehaviour
     public void ReceiveWind(Vector2 blow)
     {
         ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSystem.particleCount];
-;
+;   
         wind = blow * windMultiply;
-        particleSystem.GetParticles(particles);
-        for(int i = 0; i < particles.Length; i++)
+        if(wind.magnitude != 0)
         {
-            particles[i].velocity = wind.normalized;
+            Vector2 dir = wind.normalized;
+            cloud.SetVector("_Dir", dir);
+            cloud2.SetVector("_Dir", dir);
+
+            particleSystem.GetParticles(particles);
+            for (int i = 0; i < particles.Length; i++)
+            {
+                particles[i].velocity = wind;
+            }
+            slider.value -= wind.magnitude * rate * Time.deltaTime;
+            
         }
     }
 }
