@@ -12,7 +12,6 @@ public class WindReactiveObject : MonoBehaviour
     {
         windController = GameObject.Find("WindController");
         WindController.OnWindApply += OnWind;
-        
     }
 
     private void Start()

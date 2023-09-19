@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 79562098}
   - component: {fileID: 79562100}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: Level Bounds
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31120,11 +31120,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 947648073892662965, guid: 26f6b530bac4be74baa6f89b7f3ad1b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.47
       objectReference: {fileID: 0}
     - target: {fileID: 947648073892662965, guid: 26f6b530bac4be74baa6f89b7f3ad1b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 947648073892662965, guid: 26f6b530bac4be74baa6f89b7f3ad1b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31162,6 +31162,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 147621925}
+    - target: {fileID: 7631890477900091925, guid: 26f6b530bac4be74baa6f89b7f3ad1b0, type: 3}
+      propertyPath: levelBounds
+      value: 
+      objectReference: {fileID: 79562096}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
