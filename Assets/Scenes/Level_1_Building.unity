@@ -12214,6 +12214,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c0979f8aa1e84eb28745a2951741f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &147621927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147621925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31cd76bb533307488e9780f8097fe01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &149129342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13709,6 +13721,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3253641058722338796, guid: a88d2bbd8b9d9bc4499f719bd3989009, type: 3}
   m_PrefabInstance: {fileID: 343872037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &344121795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344121797}
+  - component: {fileID: 344121796}
+  m_Layer: 0
+  m_Name: Bird Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &344121796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344121795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ddbf8a577fb3c4ab286b962931f024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  birdPrefabs:
+  - {fileID: 4738583607247850075, guid: c261ef1fd97be9e42899a56e66e77478, type: 3}
+  - {fileID: 1414760888}
+  birdSpawnInitDelay: 20
+  birdSpawnInterval: 10
+--- !u!4 &344121797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344121795}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &346780585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23715,6 +23776,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5132304716423285861, guid: e0cda5cf5a8b2084994a779d0e20a5f4, type: 3}
   m_PrefabInstance: {fileID: 1414760886}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1414760888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4738583607247850075, guid: e0cda5cf5a8b2084994a779d0e20a5f4, type: 3}
+  m_PrefabInstance: {fileID: 1414760886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1428014705
 GameObject:
   m_ObjectHideFlags: 0
@@ -30384,6 +30450,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5253354322712398871, guid: a9224411d6332c341ab62365e2a60177, type: 3}
       insertIndex: -1
       addedObject: {fileID: 147621926}
+    - targetCorrespondingSourceObject: {fileID: 5253354322712398871, guid: a9224411d6332c341ab62365e2a60177, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 147621927}
   m_SourcePrefab: {fileID: 100100000, guid: a9224411d6332c341ab62365e2a60177, type: 3}
 --- !u!1001 &8699826091181093459
 PrefabInstance:
@@ -30516,3 +30585,4 @@ SceneRoots:
   - {fileID: 1327113968}
   - {fileID: 623376986}
   - {fileID: 1428014707}
+  - {fileID: 344121797}
