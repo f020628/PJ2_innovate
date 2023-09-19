@@ -16,9 +16,8 @@ public class Gameover : MonoBehaviour
     {
         
     }
-     void OnCollisionEnter(Collision collision)
+     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision");
         string[] obstacleTags = { "Obstacle", "Balloon" };
 
         if (System.Array.Exists(obstacleTags, tag => tag == collision.gameObject.tag))
