@@ -27,7 +27,8 @@ public class PaperPlane : MonoBehaviour
     public float horizontalDampRatio;
     public float XnaturalDecay;
     public float YnaturalDecay;
-    public float convertionRatio;
+    public float convertionRatioX;
+    public float convertionRatioY;
 
     /// <summary>
     /// down is 1, up is -1
@@ -80,7 +81,7 @@ public class PaperPlane : MonoBehaviour
         float conversion = Mathf.Max(Vector2.Dot(new Vector2(1, 1).normalized, transform.right), Vector2.Dot(new Vector2(1, -1).normalized, transform.right));
         //Debug.Log(conversion);
         conversion = Mathf.Clamp((conversion - Mathf.Sqrt(2) / 2 + float.Epsilon) / (1 - Mathf.Sqrt(2)/2) , 0, 1);
-        conversion *= Mathf.Sign(angleOffset) * convertionRatio * Time.deltaTime;
+        conversion *= Mathf.Sign(angleOffset) * convertionRatioX * Time.deltaTime;
 
         float value = horizontalV - decay + wind.x * (windEfficiency + 0.15f) + conversion - XnaturalDecay * Time.deltaTime;// - Mathf.Abs(angleOffset) * verticalDecayRatio * Time.deltaTime;
         return value;
@@ -91,10 +92,10 @@ public class PaperPlane : MonoBehaviour
         //if good & fast, hold speed
         float speedOffset = Mathf.Clamp((maxHorizontalV - rb.velocity.x) / maxHorizontalV, 0.4f, 1);
         speedOffset = Mathf.Lerp(0.2f, 1.2f, speedOffset);
-        float rotationOffset = Mathf.Lerp(0.2f, 1, Mathf.Abs(angleOffset));
+        float rotationOffset = Mathf.Lerp(0.1f, 1.4f, Mathf.Abs(angleOffset));
         float decay = verticalDampRatio * maxVerticalV * Time.deltaTime * rotationOffset * speedOffset;
 
-        float conversion = Mathf.Lerp(0.4f, 1, Mathf.Abs(angleOffset)) * convertionRatio * Time.deltaTime;
+        float conversion = Mathf.Lerp(0.2f, 1.2f, Mathf.Abs(angleOffset)) * convertionRatioY * Time.deltaTime;
      
         float value = verticalV - decay + wind.y * windEfficiency - rotationOffset * YnaturalDecay * Time.deltaTime - conversion;// - (0.1f + angleOffset) * accelerationRatio * Time.deltaTime;
         return value;
@@ -132,6 +133,7 @@ public class PaperPlane : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationResult));
     }
 
+    private Vector2 dir = Vector2.right;
     public void ReceiveWind(Vector2 blow)
     {
         ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSystem.particleCount];
@@ -140,17 +142,23 @@ public class PaperPlane : MonoBehaviour
         if(wind.magnitude != 0)
         {
             Vector2 dir = wind.normalized;
-            cloud.SetVector("_Dir", dir);
-            cloud2.SetVector("_Dir", dir);
+            cloud.SetVector("_Dir", Vector2.zero);
+            cloud2.SetVector("_Dir", Vector2.zero);
 
             particleSystem.GetParticles(particles);
             for (int i = 0; i < particles.Length; i++)
             {
                 particles[i].velocity = wind;
             }
-            slider.value -= wind.magnitude * rate * Time.deltaTime;
+            slider.value -= (wind.magnitude + 0.15f) * rate * Time.deltaTime;
             
         }
+        else
+        {
+            cloud.SetVector("_Dir", dir);
+            cloud2.SetVector("_Dir", dir);
+        }
+
     }
 
    

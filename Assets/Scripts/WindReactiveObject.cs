@@ -21,17 +21,21 @@ public class WindReactiveObject : MonoBehaviour
         if(plane.slider.value >= 0.05f && time > cd)
         {
             plane.ReceiveWind(windDir);
+            plane.slider.value += Time.deltaTime * plane.regeneration;
         }
-        else if(time < cd)
-        {
-            time += Time.deltaTime;
-        }
-        else if(plane.slider.value < 0.05f)
+        else if(plane.slider.value < 0.05f && time > cd)
         {
             time = 0;
         }
-        
-        plane.slider.value += Time.deltaTime * plane.regeneration;
+
+        if(time < cd)
+        {
+            time += Time.deltaTime;
+        }
+        else
+        {
+            plane.slider.value += Time.deltaTime * plane.regeneration;
+        }
         
     }
 

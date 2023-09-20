@@ -12416,8 +12416,8 @@ MonoBehaviour:
   cloud2: {fileID: 2100000, guid: e2126cf12d46cf641ad159fb62ee8296, type: 2}
   particleSystem: {fileID: 880326785}
   slider: {fileID: 1066149978}
-  rate: 0
-  regeneration: 0
+  rate: 3
+  regeneration: 0.3
   windMultiply: 0.1
   maxHorizontalV: 4
   maxVerticalV: 3
@@ -12427,7 +12427,8 @@ MonoBehaviour:
   horizontalDampRatio: 0.064
   XnaturalDecay: 0.05
   YnaturalDecay: 1.76
-  convertionRatio: 1.25
+  convertionRatioX: 1
+  convertionRatioY: 2
 --- !u!114 &147621931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19073,6 +19074,18 @@ PrefabInstance:
     - target: {fileID: 3059827495865256282, guid: 1da7a3af42bbd784fbf183613f5aa8fd, type: 3}
       propertyPath: NoiseModule.frequency
       value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3059827495865256282, guid: 1da7a3af42bbd784fbf183613f5aa8fd, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 17.325848
+      objectReference: {fileID: 0}
+    - target: {fileID: 3059827495865256282, guid: 1da7a3af42bbd784fbf183613f5aa8fd, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 8.53784
+      objectReference: {fileID: 0}
+    - target: {fileID: 3059827495865256282, guid: 1da7a3af42bbd784fbf183613f5aa8fd, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3059827495865256282, guid: 1da7a3af42bbd784fbf183613f5aa8fd, type: 3}
       propertyPath: VelocityModule.x.scalar
