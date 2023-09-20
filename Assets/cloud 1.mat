@@ -54,7 +54,7 @@ Material:
     - _Transparency: 0.682
     m_Colors:
     - _Color: {r: 0.91211283, g: 0.9593821, b: 0.9716981, a: 1}
-    - _Dir: {r: 0.8126227, g: 0.58279, b: 0, a: 0}
+    - _Dir: {r: -0.99173, g: -0.12834159, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5108768698694847900
 MonoBehaviour:

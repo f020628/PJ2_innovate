@@ -42,7 +42,8 @@ public class PaperPlane : MonoBehaviour
     float verticalV;
     Vector2 wind = Vector2.zero;
     void Awake()
-    {   
+    {   //FMOD playoneshot
+        FMODUnity.RuntimeManager.PlayOneShot("event:/BGM", GetComponent<Transform>().position);
         rb = GetComponent<Rigidbody2D>();
 
         horizontalV = 5;

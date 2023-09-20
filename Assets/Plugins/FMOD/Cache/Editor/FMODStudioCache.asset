@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6760007456467495055
+--- !u!114 &-6559139076661107690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,14 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/New Event
+  m_Name: event:/bird
   m_EditorClassIdentifier: 
-  Path: event:/New Event
+  Path: event:/bird
   Guid:
-    Data1: -1220579876
-    Data2: 1335991424
-    Data3: -1635838824
-    Data4: -2115123424
+    Data1: 16577755
+    Data2: 1299929597
+    Data3: 910819223
+    Data4: -735132758
+  Banks:
+  - {fileID: 1881020303740090174}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-1055510346932726201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/button
+  m_EditorClassIdentifier: 
+  Path: event:/button
+  Guid:
+    Data1: 1349523712
+    Data2: 1121586924
+    Data3: 834135471
+    Data4: -1771033927
   Banks:
   - {fileID: 1881020303740090174}
   IsStream: 0
@@ -26,7 +53,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 530
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,13 +70,16 @@ MonoBehaviour:
   - {fileID: 4251492040263602092}
   - {fileID: 1881020303740090174}
   EditorEvents:
-  - {fileID: -6760007456467495055}
+  - {fileID: -1055510346932726201}
+  - {fileID: -6559139076661107690}
+  - {fileID: 2565937436922993814}
+  - {fileID: 4727018213990890728}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1881020303740090174}
   StringsBanks:
   - {fileID: 4251492040263602092}
-  cacheTime: 638307509635559638
+  cacheTime: 638307528429215191
   cacheVersion: 131607
 --- !u!114 &1881020303740090174
 MonoBehaviour:
@@ -66,11 +96,38 @@ MonoBehaviour:
   Path: fmodproject/pj2/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638307509635559638
+  lastModified: 638307528429202707
   FileSizes:
   - Name: Desktop
-    Value: 1574
+    Value: 1625408
   Exists: 1
+--- !u!114 &2565937436922993814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/bGM
+  m_EditorClassIdentifier: 
+  Path: event:/bGM
+  Guid:
+    Data1: -1220579876
+    Data2: 1335991424
+    Data3: -1635838824
+    Data4: -2115123424
+  Banks:
+  - {fileID: 1881020303740090174}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 69200
 --- !u!114 &4251492040263602092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,8 +143,35 @@ MonoBehaviour:
   Path: fmodproject/pj2/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638307509635559638
+  lastModified: 638307528429215191
   FileSizes:
   - Name: Desktop
-    Value: 758
+    Value: 882
   Exists: 1
+--- !u!114 &4727018213990890728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/wind
+  m_EditorClassIdentifier: 
+  Path: event:/wind
+  Guid:
+    Data1: -102966561
+    Data2: 1294402967
+    Data3: 207230654
+    Data4: -1159994893
+  Banks:
+  - {fileID: 1881020303740090174}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2403

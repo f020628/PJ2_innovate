@@ -7,18 +7,26 @@ public class Bird : MonoBehaviour
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private Vector3 dir = Vector3.left;
     private SpriteRenderer spriteRenderer;
+    bool call;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        call = true;
     }
 
     void Update()
     {
         if (spriteRenderer.isVisible)
         {
-            // 物体在摄像机视野内，执行你的函数
             YourFunction();
+            //FMOD PlayOneShot
+            if (call == true)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/bird", GetComponent<Transform>().position);
+                call = false;
+            }
+            
         }
     }
 
