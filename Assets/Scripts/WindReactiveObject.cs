@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class WindReactiveObject : MonoBehaviour
 {
-    private GameObject windController;
     public PaperPlane plane;
     private float cd = 1;
     private float time = 2;
     private void Awake()
     {
-        windController = GameObject.Find("WindController");
         WindController.OnWindApply += OnWind;
     }
 
@@ -35,5 +33,10 @@ public class WindReactiveObject : MonoBehaviour
         
         plane.slider.value += Time.deltaTime * plane.regeneration;
         
+    }
+
+    private void OnDisable()
+    {
+        WindController.OnWindApply -= OnWind;
     }
 }
