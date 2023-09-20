@@ -22,13 +22,8 @@ public class Balloon : MonoBehaviour
     {
         if (spriteRenderer.isVisible)
         {
-            // 物体在摄像机视野内，执行你的函数
-            YourFunction();
+            transform.Translate(dir * speed * Time.deltaTime);
         }
     }
 
-    void YourFunction()
-    {
-        transform.Translate(dir * speed * Time.deltaTime);
-    }
 }
