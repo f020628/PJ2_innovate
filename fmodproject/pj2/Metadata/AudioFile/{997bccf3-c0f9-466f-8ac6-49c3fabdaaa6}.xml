@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{997bccf3-c0f9-466f-8ac6-49c3fabdaaa6}">
+		<property name="assetPath">
+			<value>knock_wood.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>16</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.7999999999999998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{544977cc-3b8a-47f6-b31a-967429479b07}</destination>
+		</relationship>
+	</object>
+</objects>
