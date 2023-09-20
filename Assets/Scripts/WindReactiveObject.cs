@@ -5,8 +5,9 @@ using UnityEngine;
 public class WindReactiveObject : MonoBehaviour
 {
     public PaperPlane plane;
-    private float cd = 1;
+    private float cd = 0.6f;
     private float time = 2;
+    private bool ok = true;
     private void Awake()
     {
         WindController.OnWindApply += OnWind;
@@ -18,25 +19,28 @@ public class WindReactiveObject : MonoBehaviour
     }
     private void OnWind(Vector2 windDir)
     {
-        if(plane.slider.value >= 0.05f && time > cd)
+        if(plane.slider.value > 0.05f && windDir != Vector2.zero)
         {
             plane.ReceiveWind(windDir);
-            plane.slider.value += Time.deltaTime * plane.regeneration;
         }
-        else if(plane.slider.value < 0.05f && time > cd)
+        else if(plane.slider.value <= 0.05f && windDir != Vector2.zero)
         {
             time = 0;
+            ok = false;
         }
 
-        if(time < cd)
-        {
-            time += Time.deltaTime;
-        }
-        else
+        if(ok)
         {
             plane.slider.value += Time.deltaTime * plane.regeneration;
         }
-        
+        else if(time <= cd && !ok)
+        {    
+            time += Time.deltaTime;
+        }
+        else if(time > cd && !ok)
+        {
+            ok = true;
+        }
     }
 
     private void OnDisable()

@@ -37,11 +37,14 @@ public class PaperPlane : MonoBehaviour
     /// <summary>
     /// perpendicular to wind? 0.2 to 1
     /// </summary>
+    
     private float windEfficiency = 0;
     Rigidbody2D rb;
     float horizontalV;
     float verticalV;
     Vector2 wind = Vector2.zero;
+    bool noWind;
+
     void Awake()
     {   //FMOD playoneshot
         FMODUnity.RuntimeManager.PlayOneShot("event:/BGM", GetComponent<Transform>().position);
@@ -67,11 +70,22 @@ public class PaperPlane : MonoBehaviour
         horizontalV = ChangeVelocityX();
         verticalV = ChangeVelocityY();
 
-        horizontalV = Mathf.Clamp(horizontalV, 0, maxHorizontalV);
-        verticalV = Mathf.Max(Mathf.Min(verticalV, maxVerticalV), -maxVerticalV * 1.4f);
+        horizontalV = Mathf.Clamp(horizontalV, 0.5f, maxHorizontalV);
+        verticalV = Mathf.Max(Mathf.Min(verticalV, maxVerticalV), -maxVerticalV * 1.1f);
         rb.velocity = new Vector2(horizontalV, verticalV);
        // Debug.Log(rb.velocity);
 
+    }
+
+    private void LateUpdate()
+    {
+        if (noWind)
+        {
+            cloud.SetVector("_Dir", dir);
+            cloud2.SetVector("_Dir", dir);
+            wind = Vector2.zero;
+        }
+        noWind = true;
     }
 
     private float ChangeVelocityX()
@@ -81,23 +95,22 @@ public class PaperPlane : MonoBehaviour
         float conversion = Mathf.Max(Vector2.Dot(new Vector2(1, 1).normalized, transform.right), Vector2.Dot(new Vector2(1, -1).normalized, transform.right));
         //Debug.Log(conversion);
         conversion = Mathf.Clamp((conversion - Mathf.Sqrt(2) / 2 + float.Epsilon) / (1 - Mathf.Sqrt(2)/2) , 0, 1);
-        conversion *= Mathf.Sign(angleOffset) * convertionRatioX * Time.deltaTime;
+        conversion *= Mathf.Clamp(Mathf.Sign(angleOffset), -0.8f, 1) * convertionRatioX * Time.deltaTime;
 
-        float value = horizontalV - decay + wind.x * (windEfficiency + 0.15f) + conversion - XnaturalDecay * Time.deltaTime;// - Mathf.Abs(angleOffset) * verticalDecayRatio * Time.deltaTime;
+        float value = horizontalV - decay + wind.x * (windEfficiency + 0.15f) + conversion - rotationOffset * XnaturalDecay * Time.deltaTime;// - Mathf.Abs(angleOffset) * verticalDecayRatio * Time.deltaTime;
         return value;
     }
 
     private float ChangeVelocityY()
     {
         //if good & fast, hold speed
-        float speedOffset = Mathf.Clamp((maxHorizontalV - rb.velocity.x) / maxHorizontalV, 0.4f, 1);
+        float speedOffset = Mathf.Clamp((maxHorizontalV - rb.velocity.x) / maxHorizontalV, 0.3f, 1);
         speedOffset = Mathf.Lerp(0.2f, 1.2f, speedOffset);
-        float rotationOffset = Mathf.Lerp(0.1f, 1.4f, Mathf.Abs(angleOffset));
-        float decay = verticalDampRatio * maxVerticalV * Time.deltaTime * rotationOffset * speedOffset;
-
-        float conversion = Mathf.Lerp(0.2f, 1.2f, Mathf.Abs(angleOffset)) * convertionRatioY * Time.deltaTime;
-     
-        float value = verticalV - decay + wind.y * windEfficiency - rotationOffset * YnaturalDecay * Time.deltaTime - conversion;// - (0.1f + angleOffset) * accelerationRatio * Time.deltaTime;
+        float rotationOffset = Mathf.Lerp(0, 1.4f, Mathf.Abs(angleOffset));
+        float decay = verticalDampRatio * maxVerticalV * Time.deltaTime * rotationOffset * speedOffset * 3;
+        Debug.Log(decay/ Time.deltaTime);
+        float conversion = angleOffset * convertionRatioY * horizontalV * Time.deltaTime;
+        float value = verticalV - decay + wind.y * windEfficiency - rotationOffset * YnaturalDecay * Time.deltaTime - conversion;
         return value;
     }
 
@@ -105,8 +118,8 @@ public class PaperPlane : MonoBehaviour
     {
         float maxV = maxHorizontalV;
         float speedOffset = Mathf.Clamp( (maxV - rb.velocity.x)/ maxV, 0.1f, 1);
-        speedOffset = Mathf.Lerp(0.2f, 1.5f, speedOffset);
-        float localAngleOffset = Mathf.Lerp(0.2f, 1.5f, Mathf.Abs(angleOffset));
+        speedOffset = Mathf.Lerp(0.1f, 1.1f, speedOffset);
+        float localAngleOffset = Mathf.Lerp(0.2f, 1f, Mathf.Abs(angleOffset));
         float rotationResult = transform.rotation.eulerAngles.z;
         //wind
         if (wind.magnitude != 0)
@@ -117,10 +130,10 @@ public class PaperPlane : MonoBehaviour
         else
         {
             float target = Vector3.SignedAngle(transform.right, rb.velocity, Vector3.forward);
-            rotationResult += target * Time.deltaTime * localAngleOffset * speedOffset - naturalRotateDecay * Time.deltaTime;
-
+            rotationResult += target * Time.deltaTime * localAngleOffset * speedOffset  - naturalRotateDecay * Time.deltaTime + Mathf.Min(angleOffset, 0) * 3 * Time.deltaTime;
+            Debug.Log(naturalRotateDecay * Time.deltaTime );
         }
-
+        Debug.Log(wind.magnitude + " " + (wind.magnitude != 0).ToString());
         if (rotationResult >= 90 && rotationResult <= 180)
         {
             rotationResult = 90;
@@ -136,6 +149,8 @@ public class PaperPlane : MonoBehaviour
     private Vector2 dir = Vector2.right;
     public void ReceiveWind(Vector2 blow)
     {
+        noWind = false;
+
         ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSystem.particleCount];
 ;   
         wind = blow * windMultiply;
@@ -152,11 +167,6 @@ public class PaperPlane : MonoBehaviour
             }
             slider.value -= (wind.magnitude + 0.15f) * rate * Time.deltaTime;
             
-        }
-        else
-        {
-            cloud.SetVector("_Dir", dir);
-            cloud2.SetVector("_Dir", dir);
         }
 
     }
