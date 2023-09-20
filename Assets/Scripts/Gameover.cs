@@ -25,9 +25,9 @@ public class Gameover : MonoBehaviour
             SceneManager.LoadScene("Fail"); 
         }
        
-        /*/if (collision.gameObject.tag == "Obstacle")  
+        if (collision.gameObject.tag == "Finish")
         {
-            SceneManager.LoadScene("Fail");  
-        }*/
+            SceneManager.LoadScene("Win");  
+        }
     }
 }
