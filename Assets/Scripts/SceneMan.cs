@@ -23,6 +23,13 @@ public class SceneMan : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
-             SceneManager.LoadScene("Level_1_Building"); 
+        {
+            SceneManager.LoadScene("Level_1_Building"); 
+        }
+             
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Application.Quit();
+        }
     }
 }
